@@ -340,20 +340,6 @@ state(Solid) {
 }
 ``` 
 
-By default, when a transition fails, the _exit_ block of the edge will not be called and the state machine will re-enter
-the "from" state of the transition.
-
-1. `Node` Solid OnExit
-2. `Edge` Solid --> Liquid OnEnter
-3. `Node` Solid OnEnter
-
-An application might be tempted to show and hide a progress indicator (`onEnter` / `onExit`) while making a REST service
-call (using `execute`)
-but the lack of a call to the `onExit` when a transition fails would leave the progress indicator visible. In that case
-the call to `failure()`
-can be replaced with `failAndExit()` to ensure that the `onEnter` / `onExit` are still executed as a pair.
-
-The execution block can be combined with the call to `transitionTo()` for a more concise syntax
 
 ```kotlin
 state(Solid) {
